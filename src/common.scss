@@ -1,1 +1,17 @@
+@font-face {
+  font-family: gameFont;
+  src: url("font/MadeleinaSans.otf");
+}
 
+html,
+body {
+  font-family: gameFont, Helvetica, sans-serif;
+}
+
+.no-select {
+  user-select: none;
+}
+
+.margin-left-10 {
+  margin-left: 10px;
+}

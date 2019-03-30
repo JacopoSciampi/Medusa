@@ -1,0 +1,66 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="modal">
+      <div class="top-text no-select">
+        Login or start a new adventure!
+      </div>
+      <div class="form">
+        <div class="input-line">
+          <fa name="user" class="icon"></fa>
+          <input
+            type="text"
+            #username
+            placeholder="Your username..."
+            class="cst-input"
+          />
+        </div>
+        <div class="input-line">
+          <fa name="key" class="icon"></fa>
+          <input
+            type="password"
+            #password
+            placeholder="Your password..."
+            class="cst-input"
+          />
+        </div>
+        <div class="input-line">
+          <fa name="list" class="icon"></fa>
+          <div class="server-info" (click)="toggleServerList()">
+            <fa name="sort-down" class="icon-down"></fa>
+            <ng-container *ngIf="!actualServerSelected">
+              <span class="margin-left-10">
+                Select a server...
+              </span>
+            </ng-container>
+            <ng-container *ngIf="!!actualServerSelected">
+              <span class="margin-left-10">
+                {{ actualServerSelected.name }}
+              </span>
+            </ng-container>
+          </div>
+        </div>
+        <div class="button-line">
+          <div class="cst-button">
+            Login
+          </div>
+          <div class="cst-button">
+            Sign in
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="message-status">{{ messageStatus }}</div>
+    <div class="server-list" [@slideInOut] *ngIf="isShowingServerList">
+      <ng-container *ngFor="let data of serverListData">
+        <div class="single-server-item" (click)="selectServer(data)">
+          <fa name="server" class="icon-server-list"></fa>
+          <div class="spaced-right">{{ data.name }}</div>
+          <fa name="calendar" class="icon-server-list"></fa>
+          <div class="spaced-right">{{ data.creation_date }}</div>
+          <fa name="users" class="icon-server-list"></fa>
+          <div class="spaced-right">{{ data.total_users }}</div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
